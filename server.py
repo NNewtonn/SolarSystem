@@ -24,6 +24,7 @@ def display():
         #Returns the position of the top left corner and bottom right and its size
         x0, y0, x1, y1 = pos_x-size, pos_y-size, pos_x+size, pos_y+size
         canvas.create_oval(x0,y0,x1,y1, fill='blue',outline='blue', tags=name)
+        #I think I need to change this so it returns the center x, y
         return (x0, y0, x1, y1, size)
     
     def spawnSatellite(parent, size, speed, mass, distance):
@@ -36,6 +37,8 @@ def display():
         #my first instinc was asking AI, but im kinda mad my brain instantly went for that solution, tomorrow I will see what I can find, there has to be an easy way to find that point in space
         #gonna try drawing it
         #Divine intervention im praying for you, gonna go sleep now, cya
+        #https://stackoverflow.com/questions/1736734/circle-circle-collision
+        #after some testing, im starting to realize maybe the rectangle thing from tkinter might not be the best foundation, rip 
 
         center_x_satellite = planet_x + parent[4] + distance
         center_y_satellite = planet_y + parent[4] + distance
@@ -46,7 +49,7 @@ def display():
 
     
     earth = spawnPlanet(center_x, center_y, 100, 'Earth')
-    jupiter = spawnPlanet(20, 10, 200, 'Jupiter')
+    jupiter = spawnPlanet(0, 0, 200, 'Jupiter')
     print(earth)
     spawnSatellite(earth, 20, 100, 50, 200)
     spawnSatellite(jupiter, 20, 100, 50, 1)
